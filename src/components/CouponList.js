@@ -35,7 +35,7 @@ function CouponList() {
                         <th>Coupon Code</th>
                         <th>Coupon Type</th>
                         <th>Discount Percentage</th>
-                        <th>Minimun Discout Amount</th>
+                        <th>Minimun Cart Value</th>
                         <th>Maximum Discount Amount</th>
                         <th>Expiry Date</th>
                     </tr>

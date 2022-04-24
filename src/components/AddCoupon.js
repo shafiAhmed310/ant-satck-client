@@ -60,6 +60,7 @@ function AddCoupon() {
             setCouponCode("");
 
         } catch (err) {
+            setLoading(false)
            console.log(err)
         }
 

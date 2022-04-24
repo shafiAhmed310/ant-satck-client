@@ -39,6 +39,7 @@ const handleSubmit = async (e)=>{
    } catch (err) {
     setCouponCode("");
     setAmount("");
+    setLoading(false)
     console.log(err)
     toast.success('Coupon expired', {
       position: "top-right",
