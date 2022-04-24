@@ -1,0 +1,9 @@
+.active{
+    color: white;
+    border: none;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+.nav-link{
+    color: black !important;
+}
