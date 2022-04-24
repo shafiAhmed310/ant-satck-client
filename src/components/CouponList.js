@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { getAllCoupons } from '../service/coupon'
-import { Table } from 'react-bootstrap'
+import { Table } from 'react-bootstrap';
+import Loading from './Loading'
 
 function CouponList() {
-    const [coupons, setCoupons] = useState([])
+    const [coupons, setCoupons] = useState([]);
+    const [loading,setLoading] = useState(false);
 
     const getCoupons = async () => {
         try {
+            setLoading(true)
             const data = await getAllCoupons();
             setCoupons(data.response);
+            setLoading(false)
         } catch (err) {
             console.log(err)
         }
@@ -22,6 +26,8 @@ function CouponList() {
 
 
     return (
+       <>
+        {loading===true?<Loading /> : ""}
         <div className="col-md-10 m-auto">
             <Table striped bordered hover variant="dark" className='mt-5 pt-5'>
                 <thead>
@@ -52,6 +58,7 @@ function CouponList() {
                 </tbody>
             </Table>
         </div>
+        </>
     )
 }
 

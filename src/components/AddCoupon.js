@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import { addCoupon } from '../service/coupon';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from './Loading';
 
 function AddCoupon() {
     let date = new Date();
@@ -15,7 +16,7 @@ function AddCoupon() {
     const [expiredAt, setExpiredAt] = useState(today);
     const [couponCode, setCouponCode] = useState("");
     const [response, setResponse] = useState("");
-    
+    const [loading,setLoading] = useState(false);
 
     function generateCouponCode() {
         let coupon = "";
@@ -38,6 +39,7 @@ function AddCoupon() {
         }
 
         try {
+            setLoading(true)
             const data = await addCoupon(coupon);
             setResponse(data.response)
             toast.success(data.message, {
@@ -49,6 +51,7 @@ function AddCoupon() {
                 draggable: true,
                 progress: undefined,
             });
+            setLoading(false)
             setCouponType("");
             setDiscountPercentage("");
             setMinimunDiscoutAmount("");
@@ -67,7 +70,7 @@ function AddCoupon() {
     }, [])
     return (
         <>
-
+  {loading===true?<Loading /> : ""}
             <ToastContainer
                 position="top-left"
                 autoClose={5000}

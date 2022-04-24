@@ -3,12 +3,15 @@ import { redeemCoupon } from '../service/coupon';
 import { Form, Button } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from './Loading';
+
 
 function RedeemCoupon() {
   const [couponCode, setCouponCode] = useState("");
   const [amount, setAmount] = useState("");
   const [response, setResponse] = useState("");
-  const [cartValue,setCartValue] = useState("")
+  const [cartValue,setCartValue] = useState("");
+  const [loading,setLoading] = useState(false);
 
 const handleSubmit = async (e)=>{
   e.preventDefault();
@@ -17,6 +20,7 @@ const handleSubmit = async (e)=>{
     amount:amount
   }
    try {
+    setLoading(true)
      const couponResponse  = await redeemCoupon(coupon);
      toast.success(couponResponse.message, {
       position: "top-right",
@@ -29,7 +33,7 @@ const handleSubmit = async (e)=>{
   });
       setResponse(couponResponse?.response?.discount);
       setCartValue(couponResponse?.response?.CartValue)
-      
+      setLoading(false)
        setCouponCode("");
        setAmount("");
    } catch (err) {
@@ -50,6 +54,8 @@ const handleSubmit = async (e)=>{
 }
 
   return (
+    <>
+      {loading===true?<Loading /> : ""}
     <div className='col-md-4 m-auto pt-5'>
        <ToastContainer
                 position="top-left"
@@ -81,6 +87,7 @@ const handleSubmit = async (e)=>{
        
     </div>
 </div>
+</>
   )
 }
 
