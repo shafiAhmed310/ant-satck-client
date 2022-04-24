@@ -90,7 +90,7 @@ function AddCoupon() {
                     </Form.Select>
                     <Form.Group className="mb-3">
                         <Form.Label>Discount Percentage</Form.Label>
-                        <Form.Control type="number"  min={0} required name='discountPercentage' value={discountPercentage} onChange={(event) => { setDiscountPercentage(event.target.value) }} placeholder="10" />
+                        <Form.Control type="number"  min={0}  max={100} required name='discountPercentage' value={discountPercentage} onChange={(event) => { setDiscountPercentage(event.target.value) }} placeholder="10" />
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Minimun Cart Amount</Form.Label>

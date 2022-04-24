@@ -28,7 +28,7 @@ function CouponList() {
     return (
        <>
         {loading===true?<Loading /> : ""}
-        <div className="col-md-10 m-auto">
+        <div className=" col-12 col-md-10 m-auto">
             <Table striped bordered hover variant="dark" className='mt-5 pt-5'>
                 <thead>
                     <tr>
